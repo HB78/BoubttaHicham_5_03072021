@@ -1,0 +1,2 @@
+A quoi sert le asynch puisque lorsque je l'enleve cela marche toujours ?
+A quoi sa sert de retourner le fetch dans la fonction ?
