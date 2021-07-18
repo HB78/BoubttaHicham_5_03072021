@@ -3,12 +3,12 @@
 body {
     max-width: 1600px;
     box-sizing: border-box;
-    margin: 0;
+    margin:0;
     padding: 0;
 }
 header {
     display:flex;
-    width:97%;
+    width:100%;
     height: 90px;
     align-items: center;
     justify-content: space-between;
@@ -77,4 +77,48 @@ footer {
     width: 100%;
     object-fit: cover;
     height: 50%;
+}
+/*panier*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+  height: 450px;
+  margin:auto;
+}
+input {
+    border-radius: 0.375rem;
+    height: 25px;
+    border-color: rgb(214, 205, 205);
+}
+label {
+    font-weight: 900;
+}
+#commander {
+    width: 50%;
+    margin-top: 15px;
+    font-size: large;
+    color:white;
+    background-color: blue;
+    border-color: transparent;
+    padding: 0.4rem;
+    border-radius: 0.775rem;
+    margin-bottom: 1rem;
+    cursor:pointer;
+    box-shadow: 1px 0px 6px black;
+    transition: all 400ms;
+}
+#commander:hover {
+    transform: scale(0.98);
+    transition-duration: 400ms;
+}
+.divbtn {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+table {
+    width: 100%;
 }

@@ -25,7 +25,30 @@ function getdata() {
     .catch(console.log("erreur"))
   }
 
+function addproduct(name, price) {
+  let quantity = document.getElementById("quantity").value;
+  quantity = parseInt(quantity)
+  const color = document.getElementById("color").value;
   
+  let product = {
+    quantity: quantity,
+    name: name,
+    price: price,
+  };
+  let pannier = localStorage.getItem("pannier");
+  if (pannier == null) {
+    console.log("Pannier vide on le remplis pour la 1ere foi");
+    localStorage.setItem("pannier", [product])
+  }
+  else {
+    console.log("Pannier déjà existant on rajoute des items");
+    // Détecter si le produit est déjà dans le pannier
+    // utiliser forEatch ou map pour détecter
+    // si il existe ajouté la qte choisis
+    // sinon 'PUSH' l'objet dans le tableau
+  }
+}
+
 function produit(data) {
     teddies.innerHTML +=`
     <div class="peluche" id="cardsProduct">
@@ -35,22 +58,25 @@ function produit(data) {
         <span class="peluche-description">
           ${data.description}
         </span>
-        <select class="options" id ="option">
-          <option>${data.colors[1]}</option>
-          <option>${data.colors[2]}</option>
-          <option>${data.colors[3]}</option>
+        <select class="options" id ="color">
+          <option value=${data.colors[0]}>${data.colors[0]}</option>
+          <option value=${data.colors[1]}>${data.colors[1]}</option>
+          <option value=${data.colors[2]}>${data.colors[2]}</option>
         </select>
         <p class="prix"> Prix Unitaire: ${data.price/ 100}€</p>
-        <select class="quantite" id="quantity">           
+        <select class="quantite" id="quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
         </select>         
-        <a href ="panier.html"><button type ="submit" id="panier" value="submit"> Ajouter au panier</button></a>
+        <button onclick="addproduct('${data.name}', ${data.price/100})" type ="submit" id="panier" value="submit"> Ajouter au panier</button>
       </div>
     </div>
   `;
+  
 }
+
+
 getdata()
 
 console.log(id)
@@ -58,3 +84,5 @@ console.log(id)
 // for (let lenses of camera.lenses){
 //   document.getElementById('option').innerHTML+=
 //   `<option value="1">${data[0].colors[2]}</option>`
+
+
