@@ -1,6 +1,6 @@
 let products = document.querySelector("#products")
 
-async function getdata() { 
+function getdata() { 
   fetch("http://localhost:3000/api/teddies")
   .then(res => {
       if(res.ok) {
@@ -13,6 +13,7 @@ async function getdata() {
       console.log(data)
       console.log(data[0].name)
       const html = data[0].name + data[0].colors + data[0].imageUrl
+      console.log(data[0].colors[2])
   }
     )
   .catch(console.log("erreur"))
@@ -23,7 +24,7 @@ function datacards(data) {
         products.innerHTML += `
                 <div class="productCard">
                     <a
-                        href="product.html${data[i]._id}"
+                        href="product.html?id=${data[i]._id}"
                         class="productLink"
                     >
                         <img class="img" src="${
@@ -44,3 +45,5 @@ function datacards(data) {
     }
 }
 getdata()
+
+

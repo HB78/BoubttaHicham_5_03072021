@@ -1,2 +1,4 @@
 A quoi sert le asynch puisque lorsque je l'enleve cela marche toujours ?
 A quoi sa sert de retourner le fetch dans la fonction ?
+
+suis-je obligé de me connecter à l'API à chaque page que je créer ?
