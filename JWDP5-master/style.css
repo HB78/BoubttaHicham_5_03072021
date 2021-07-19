@@ -14,10 +14,10 @@ header {
     justify-content: space-between;
     box-sizing: border-box;
     padding-top: 0.4rem;
-    background-color: #ffc107;
+    background-image: linear-gradient(to bottom, #8472be, #559ade, #33bce6, #5fdade, #a2f2d3);
     margin: auto;
     padding-right: 1%;
-    
+    font-weight: bolder;
 }
 header > div {
     display: flex;
@@ -30,6 +30,9 @@ header > div {
 header > div > img {
     height: 60%;
     width: 50%;
+}
+span {
+    margin-left: 0.6rem;
 }
 #products {
     display: flex;
@@ -58,7 +61,7 @@ a {
 }
 footer {
     text-align: center;
-    background-color: #ffc107;
+    background-image: linear-gradient(to bottom, #8472be, #559ade, #33bce6, #5fdade, #a2f2d3);
     height: 70px;
     display: flex;
     align-items: center;
@@ -122,3 +125,4 @@ label {
 table {
     width: 100%;
 }
+/*#ffc107*/

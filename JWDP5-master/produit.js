@@ -26,27 +26,46 @@ function getdata() {
   }
 
 function addproduct(name, price) {
+  /* Variable */
   let quantity = document.getElementById("quantity").value;
   quantity = parseInt(quantity)
-  const color = document.getElementById("color").value;
-  
+  // const color = document.getElementById("color").value;
   let product = {
     quantity: quantity,
     name: name,
     price: price,
   };
-  let pannier = localStorage.getItem("pannier");
-  if (pannier == null) {
-    console.log("Pannier vide on le remplis pour la 1ere foi");
-    localStorage.setItem("pannier", [product])
+  let panier = localStorage.getItem("panier");
+  
+  /* Algorithme */
+  if (panier == null) {
+    console.log("Panier vide on le remplis pour la 1ere foi");
+    panier = [product]
+    localStorage.setItem("panier", JSON.stringify(panier));
   }
   else {
-    console.log("Pannier déjà existant on rajoute des items");
-    // Détecter si le produit est déjà dans le pannier
-    // utiliser forEatch ou map pour détecter
-    // si il existe ajouté la qte choisis
-    // sinon 'PUSH' l'objet dans le tableau
+    panier = JSON.parse(panier);
+    console.log("Panier déjà existant on rajoute des items")
+    let elemFind = false;
+    panier.forEach((produitPanier, index) => {
+      console.log("On vérifie si le nom de notre produit :> " + product.name + " Match avec un nom de produit dans le pannier :> " + produitPanier.name + " test numero :> " +  index)
+      if (product.name == produitPanier.name && elemFind == false) { // si il existe ajouté la qte choisis
+        console.log("ça match on ajoute la qte")
+        console.log("produitPanier.quantity = produitPanier.quantity + product.quantity;")
+        produitPanier.quantity = produitPanier.quantity + product.quantity;
+        console.log(" produitPanier.name :>",  produitPanier.quantity , "nouvelle qte produitPanier.quantity :>", produitPanier.quantity)
+        elemFind = true
+      } 
+    })
+    if (elemFind == false) { //finir la dondition
+      console.log("Le produite est pas dans le pannier on le push");
+      console.log('taille panier avant :>> ', panier.length);
+      panier.push(product);
+      console.log('taille panier apres :>> ', panier.length);
+    }
+    localStorage.setItem("panier", JSON.stringify(panier))
   }
+  alert("Le produit à été ajouter au panier")
 }
 
 function produit(data) {
