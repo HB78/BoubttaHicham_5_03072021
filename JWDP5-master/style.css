@@ -126,3 +126,10 @@ table {
     width: 100%;
 }
 /*#ffc107*/
+td {
+    text-align: center;
+}
+#info {
+    width: 100%;
+   
+}

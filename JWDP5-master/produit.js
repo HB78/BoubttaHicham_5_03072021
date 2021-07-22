@@ -53,11 +53,12 @@ function addproduct(name, price) {
         console.log("ça match on ajoute la qte")
         console.log("produitPanier.quantity = produitPanier.quantity + product.quantity;")
         produitPanier.quantity = produitPanier.quantity + product.quantity;
+        produitPanier.price = produitPanier.quantity * product.quantity;
         console.log(" produitPanier.name :>",  produitPanier.quantity , "nouvelle qte produitPanier.quantity :>", produitPanier.quantity)
         elemFind = true
       } 
     })
-    if (elemFind == false) { //finir la dondition
+    if (elemFind == false) { //finir la Condition
       console.log("Le produite est pas dans le pannier on le push");
       console.log('taille panier avant :>> ', panier.length);
       panier.push(product);
@@ -65,7 +66,6 @@ function addproduct(name, price) {
     }
     localStorage.setItem("panier", JSON.stringify(panier))
   }
-  alert("Le produit à été ajouter au panier")
 }
 
 function produit(data) {
