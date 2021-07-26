@@ -1,7 +1,7 @@
 //RECUPERATION DE L URL
 let params = (new URL(document.location)).searchParams;
 
-//STOCK L ID 
+//STOCK L ID
 const id = params.get("id");
 
 //EMPLACEMENT HTML
@@ -9,12 +9,12 @@ let teddies = document.querySelector("#teddies")
 
 
 
-function getdata() { 
+function getdata() {
     fetch("http://localhost:3000/api/teddies/" + id)
     .then(res => {
         if(res.ok) {
         }
-  
+
       return res.json()
     })
     .then(data => {
@@ -36,7 +36,7 @@ function addproduct(name, price) {
     price: price,
   };
   let panier = localStorage.getItem("panier");
-  
+
   /* Algorithme */
   if (panier == null) {
     console.log("Panier vide on le remplis pour la 1ere foi");
@@ -53,10 +53,9 @@ function addproduct(name, price) {
         console.log("ça match on ajoute la qte")
         console.log("produitPanier.quantity = produitPanier.quantity + product.quantity;")
         produitPanier.quantity = produitPanier.quantity + product.quantity;
-        produitPanier.price = produitPanier.quantity * product.quantity;
         console.log(" produitPanier.name :>",  produitPanier.quantity , "nouvelle qte produitPanier.quantity :>", produitPanier.quantity)
         elemFind = true
-      } 
+      }
     })
     if (elemFind == false) { //finir la Condition
       console.log("Le produite est pas dans le pannier on le push");
@@ -66,6 +65,7 @@ function addproduct(name, price) {
     }
     localStorage.setItem("panier", JSON.stringify(panier))
   }
+  alert('Le produit a été ajouté au panier');
 }
 
 function produit(data) {
@@ -87,12 +87,12 @@ function produit(data) {
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-        </select>         
+        </select>
         <button onclick="addproduct('${data.name}', ${data.price/100})" type ="submit" id="panier" value="submit"> Ajouter au panier</button>
       </div>
     </div>
   `;
-  
+
 }
 
 

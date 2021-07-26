@@ -2,83 +2,85 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <title>Orinoco entreprise thématique de e-commerce</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/5422ec4325.js" crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  <title>Orinoco entreprise thématique de e-commerce</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/5422ec4325.js" crossorigin="anonymous"></script>
 
-    <!-- Open Graph / Facebook -->
-    <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook -->
+  <!-- Open Graph / Facebook -->
 </head>
 
 <body>
-<!--LOADINGPAGE-->
-<!--LOADINGPAGE-->
-  
- <!--HEADER-->
+  <!--LOADINGPAGE-->
+  <!--LOADINGPAGE-->
+
+  <!--HEADER-->
   <header>
-    <div><img class="logo" src="./images/logo.jpg" alt="logo du site"><a href="index.html">ORINOUNOURS</a></div> 
+    <div><img class="logo" src="./images/logo.jpg" alt="logo du site"><a href="index.html">ORINOUNOURS</a></div>
     <nav><a>Panier</a></nav>
   </header>
- <!--HEADER-->
-<div class="banniere">
-  
+  <!--HEADER-->
+  <div class="banniere">
 
-</div>
- <main>
+
+  </div>
+  <main>
     <div id="panier">
-        <table id="tableproduct">
-            <h2>Vos commandes</h2>
-            <thread>
-                <tr>
-                    <th>
-                        Produit
-                    </th>
-                    <th>
-                        Quantité
-                    </th>
-                    <th>
-                        Total
-                    </th>
-                </tr>
-                
-            </thread>
-        </table>
+      <table id="tableproduct">
+        <h2>Vos commandes</h2>
+        <thread>
+          <tr>
+            <th>
+              Produit
+            </th>
+            <th>
+              Quantité
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Total
+            </th>
+          </tr>
+        </thread>
+      </table>
+      <button id="clearall" onClick="viderPanier()"> Vider le panier </button>
+      <div id="facture"></div>
 
-<div id="facture"></div>
-        
-          <h2>Livraison</h2>
-        <form>
-            <label for="name">Nom</label>
-            <input type="texte" class="form-name" placeholder="votre nom">
-        
-            <label for="first-name">Prénom</label>
-            <input type="texte" class="form-firstname" placeholder="votre prénom">
-        
-            <label for="adress">Adresse</label>
-            <input type="adress" class="form-adress" placeholder="votre adresse">
-        
-            <label for="city">Ville</label>
-            <input type="text" class="form-city" placeholder="votre ville">
-        
-            <label for="mail">Email</label>
-            <input type="mail" class="form-mail" placeholder="votre adresse email">
-        
-            <label for="telephone">Numéro de téléphone</label>
-            <input type="telephone" class="form-phone" placeholder="numéro de téléphone">
-        
-            <div class="divbtn"><button id="commander">Commander</button></div>
-        </form>
+      <h2>Livraison</h2>
+      <form>
+        <label for="name">Nom</label>
+        <input type="texte" class="form-name" placeholder="votre nom">
+
+        <label for="first-name">Prénom</label>
+        <input type="texte" class="form-firstname" placeholder="votre prénom">
+
+        <label for="adress">Adresse</label>
+        <input type="adress" class="form-adress" placeholder="votre adresse">
+
+        <label for="city">Ville</label>
+        <input type="text" class="form-city" placeholder="votre ville">
+
+        <label for="mail">Email</label>
+        <input type="mail" class="form-mail" placeholder="votre adresse email">
+
+        <label for="telephone">Numéro de téléphone</label>
+        <input type="telephone" class="form-phone" placeholder="numéro de téléphone">
+
+        <div class="divbtn"><button id="commander">Commander</button></div>
+      </form>
     </div>
- </main>
+  </main>
 
- <footer>
-     <p>Copyright-Tous droits réservés</p>
- </footer>
+  <footer>
+    <p>Copyright-Tous droits réservés</p>
+  </footer>
 
- <script src="panier.js"></script>
- </body>
+  <script src="panier.js"></script>
+</body>

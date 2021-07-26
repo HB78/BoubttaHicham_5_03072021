@@ -2,3 +2,13 @@ A quoi sert le asynch puisque lorsque je l'enleve cela marche toujours ?
 A quoi sa sert de retourner le fetch dans la fonction ?
 
 suis-je obligé de me connecter à l'API à chaque page que je créer ?
+
+*********************JS********************
+
+le probleme du bouton supprimer
+
+l'ajout d'un meme produit depuis la page d'accueil
+
+la probleme de la methode Post
+
+la gestion de la page de confirmation

@@ -1,78 +1,39 @@
-
-//appel à l'API// 
-function getdata() { 
-    fetch("http://localhost:3000/api/teddies")
-    .then(res => {
-        if(res.ok) {
-        }
-  
-      return res.json()
-    })
-    .then(data => {
-        console.log(data)
-    }
-      )
-    .catch(console.log("erreur"))
-  }
-  getdata()
-
-//Panier de l'utilisateur
+/* On récupere le pannier de l'utilisateur dans le local storage */
 let panier = JSON.parse(localStorage.getItem("panier"));
-console.log(panier[0].price*panier[0].quantity)
 
+function delIndexPanier(index) {
+  panier.splice(index, 1);
+  localStorage.setItem("panier", JSON.stringify(panier));
+  window.location.href = "panier.html";
+}
 
+function viderPanier() {
+  localStorage.removeItem("panier");
+  alert('le panier a été vidé');
+  window.location.href = "panier.html";
+}
 
-//Pour afficher les produits du panier dans le tableau//
-panier.forEach((produitPanier, index) => {
-    console.log(typeof produitPanier)
-
-        produitPanier.price = produitPanier.quantity * produitPanier.price;
-        let tableproduct = document.getElementById("tableproduct")
-
-    tableproduct.innerHTML +=`
+function main() {
+  let sommeTotal = 0;
+  let facture = document.getElementById('facture');
+  let tableproduct = document.getElementById("tableproduct");
+  console.log("panier", panier);
+  /* On remplis le html avec les donné du pannier et on calcule le total*/
+  panier.forEach((produitPanier, index) => {
+    produitPanier.totalPrice = produitPanier.quantity * produitPanier.price;
+    tableproduct.innerHTML += `
       <tr id="info">
         <td>${produitPanier.name}</td>
         <td>${produitPanier.quantity}</td>
         <td>${produitPanier.price}.00 €</td>
+        <td>${produitPanier.totalPrice}.00 €</td>
+        <td><button id="supprimer" onClick="delIndexPanier(${index})"> <i class="fas fa-trash-alt"></i></button></td>
       </tr>
     `;
+    /* On ajoute le prix de l'objet (le prix total) au prix total */
+    sommeTotal += produitPanier.totalPrice;
+  });
+  facture.innerHTML = "<div class='centerprice' >la facture est de : </div>" + sommeTotal + ".00 €";
+}
 
-})
-
-//calcule le montant total de la facture//
-
-let sommeTotal = 0;
-panier.forEach((produitPanier) => {
-  sommeTotal += produitPanier.price;
-  let facture = document.getElementById('facture')
-  facture.innerHTML = "<div>la facture est de : </div>" + sommeTotal
-  console.log(produitPanier.price)
-});
-
-//le bouton pour supprimer tous les articles//
-
-const btnclear = `
-<button id="clearall"> Vider le panier </button>
-`;
-/*insertion du bouton dans le html du panier*/
-
-tableproduct.insertAdjacentHTML("beforeend", btnclear);
-
-//le clear du bouton//
-const clearall = document.getElementById("clearall")
-console.log(clearall)
-
-//suppression de la key produit du localstorage//
-
-clearall.addEventListener('click', (e) =>{
-  e.preventDefault;
-
-    //on utilise le .removeItem pour vider le local storage//
-    localStorage.removeItem("panier")
-    alert('le panier a été vidé')
-
-    //rechargement de la page avec un panier vide//
-
-    window.location.href = "panier.html"
-})
-
+main();
