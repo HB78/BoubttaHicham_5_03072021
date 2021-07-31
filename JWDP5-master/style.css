@@ -65,6 +65,35 @@ span {
     opacity: 0.8;
     margin: auto;
 }
+.banniere2 > h1 {
+    text-align: center;
+    z-index: 12;
+}
+.banniere2 > .banniere-text2 > p{
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+.banniere2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 100%;
+    height: 60vh;
+    padding: 2rem 0rem;
+    background-image: url(./images/beta.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 5% 35%;
+}
+.banniere-text2 {
+    width: 50%;
+    border: 1px solid transparent;
+    background-color: white;
+    opacity: 0.8;
+    margin: auto;
+}
 h1, h2 {
     text-align: center;
 }
@@ -90,6 +119,18 @@ h1, h2 {
     padding: 0.2%;
     background-color: white;
     margin-top: 2%;
+    box-shadow: 1px 0px 6px black;
+    transition: all 400ms;
+}
+.productCard:hover {
+    transform: scale(1.08);
+    transition-duration: 400ms;
+}
+.price {
+    text-align: center;
+    border: 2px solid transparent;
+    background-color: #F3E9F1;
+    font-weight: bold;
 }
 .img {
     width: 100%;
@@ -113,16 +154,71 @@ footer {
 /* la page produit*/
 
 #teddies {
-    width:50%;
-    margin:auto;
+    width:70%;
+    margin: auto;
     border: 1px solid transparent;
     object-fit: contain;
     height:auto;
+}
+.nom {
+    font-size: x-large;
+    text-align: center;
+    font-family: "Pacifico", sans-serif;
 }
 .img2 {
     width: 100%;
     object-fit: cover;
     height: 50%;
+}
+h5 {
+    margin: 0;
+    font-size: larger;
+    text-align: center;
+    font-family: "Pacifico", sans-serif;
+}
+.peluche {
+  width: 100%;
+  border: 1px solid black;
+  padding: 3%;
+  margin: 1rem 0rem;
+  border-radius: 0.775rem;
+  background-color: #F3E9F1;
+}
+.btnsubmit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#paniers {
+    font-size: 1.5vw;
+    margin-top: 3%;
+    padding: 2%;
+    width: 50%;
+    border-radius: 1.25rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    background-color: yellow;
+    transition: all 400ms;
+}
+#paniers:hover {
+    background-color: orange;
+    transform: scale(0.98);
+    transition-duration: all 400ms;
+}
+.quantityx {
+    margin: 0;
+    font-size: 18px;
+}
+.prix {
+    margin: 10px 0px;
+    font-size: 20px;
+}
+.choix {
+    margin-left: 0;
+    font-size: 20px;
+}
+.peluche-description {
+    font-size: 1.5vw;
 }
 /*panier*/
 

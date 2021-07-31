@@ -76,19 +76,20 @@ function produit(data) {
         <p class="nom">${data.name}</p>
         <span class="peluche-description">
           ${data.description}
-        </span>
+        </span><br><br><span class="choix">Personnalisez votre peluche :</span>
         <select class="options" id ="color">
           <option value=${data.colors[0]}>${data.colors[0]}</option>
           <option value=${data.colors[1]}>${data.colors[1]}</option>
           <option value=${data.colors[2]}>${data.colors[2]}</option>
         </select>
         <p class="prix"> Prix Unitaire: ${data.price/ 100}€</p>
+        <span class="quantityx">Quantité</span>
         <select class="quantite" id="quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
-        </select>
-        <button onclick="addproduct('${data.name}', ${data.price/100})" type ="submit" id="panier" value="submit"> Ajouter au panier</button>
+        </select><br>
+        <div class="btnsubmit"><button onclick="addproduct('${data.name}', ${data.price/100})" type ="submit" id="paniers" value="submit"> Ajouter au panier</button></div>
       </div>
     </div>
   `;

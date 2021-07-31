@@ -30,7 +30,7 @@ function datacards(data) {
                         <img class="img" src="${
                             data[i].imageUrl
                         }"  alt="Un joli nounours !" />
-                        <div class="card-body teddyInfos text-dark">
+                        <div class="card-title">
                             <h5 class="card-title">${data[i].name}</h5>
                             <p class="price">${
                                 data[i].price / 100
