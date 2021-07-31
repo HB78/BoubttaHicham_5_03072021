@@ -95,13 +95,6 @@ function produit(data) {
 
 }
 
-
 getdata()
-
-console.log(id)
-
-// for (let lenses of camera.lenses){
-//   document.getElementById('option').innerHTML+=
-//   `<option value="1">${data[0].colors[2]}</option>`
 
 
