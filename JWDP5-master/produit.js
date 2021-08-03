@@ -20,6 +20,7 @@ function getdata() {
     .then(data => {
         produit(data)
         console.log(data)
+        localStorage.setItem("id", JSON.stringify(data._id))
     }
       )
     .catch(console.log("erreur"))

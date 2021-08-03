@@ -11,7 +11,7 @@ function getdata() {
   .then(data => {
       datacards(data)
       console.log(data)
-      console.log(data[0].name)
+      console.log(data[0]._id)
       const html = data[0].name + data[0].colors + data[0].imageUrl
       console.log(data[0].colors[2])
   }

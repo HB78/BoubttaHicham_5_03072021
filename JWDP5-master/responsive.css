@@ -46,10 +46,23 @@ nav > a {
     justify-content: center;
     align-items: center;
 }
+#clearall {
+    width:40%;
+}
+form {
+    width: 88%;
+}
+#tableproduct{
+    padding:0;
+}
 }
 /*tablette*/
 @media (min-width:768px) and (max-width:1200px) {
 .productCard {
     width: 39%;
 }
+form {
+    width: 88%;
+}
+
 }
