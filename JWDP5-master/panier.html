@@ -50,24 +50,30 @@
       <div class="clearall"><button id="clearall" onClick="viderPanier()"> Vider le panier </button></div>
       <div id="facture"></div>
 
-      <h2>Livraison</h2>
+      <h2 id="livraison">Livraison</h2>
       <form id="form" method="POST">
         <label for="name">Nom</label>
-        <input type="texte" required id="lastname" placeholder="votre nom">
+        <small id="smallname"></small>
+        <input type="text" required id="lastname" placeholder="votre nom">
 
         <label for="firstname">Prénom</label>
-        <input type="texte" required id="firstname" placeholder="votre prénom">
+        <small id="smallprenom"></small>
+        <input type="text" required id="firstname" placeholder="votre prénom">
 
         <label for="adress">Adresse</label>
-        <input type="adress" id="adress" placeholder="votre adresse">
+        <small id="smalladress"></small>
+        <input type="text" id="adress" placeholder="votre adresse">
 
         <label for="city">Ville</label>
+        <small id="smallcity"></small>
         <input type="text" required id="city" placeholder="votre ville">
 
         <label for="mail">Email</label>
+        <small id="smallmail"></small>
         <input type="mail" required id="mail" placeholder="votre adresse email">
 
         <label for="telephone">Numéro de téléphone</label>
+        <small id="smallphone"></small>
         <input type="telephone" id="phone" placeholder="numéro de téléphone">
 
         <div class="divbtn"><button id="commander">Commander</button></div>
