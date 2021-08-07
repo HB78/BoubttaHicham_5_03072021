@@ -6,25 +6,36 @@ const id = params.get("id");
 
 //EMPLACEMENT HTML
 let teddies = document.querySelector("#teddies")
-
-
+/*iteration sur les options couleurs*/
+function coloroption(data) {
+  console.log("data ici", data)
+  console.log("data.colors.length", data.colors.length)
+  let res = "";
+  for (let i = 0; i < data.colors.length; i++) {
+    res = res + `<option value=${data.colors[i]}>${data.colors[i]}</option>`
+  }
+  return res;
+}
 
 function getdata() {
-    fetch("http://localhost:3000/api/teddies/" + id)
-    .then(res => {
-        if(res.ok) {
-        }
+  fetch("http://localhost:3000/api/teddies/" + id)
+  .then(res => {
+      if(res.ok) {
+      }
 
-      return res.json()
-    })
-    .then(data => {
-        produit(data)
-        console.log(data)
-        localStorage.setItem("id", JSON.stringify(data._id))
-    }
-      )
-    .catch(console.log("erreur"))
+    return res.json()
+  })
+  .then(data => {
+      produit(data)
+      console.log(data)
+      localStorage.setItem("id", JSON.stringify(data._id))
   }
+    )
+  .catch((error) => {
+    console.log("error")
+    console.log(error)
+  })
+}
 
 function addproduct(name, price) {
   /* Variable */
@@ -70,7 +81,7 @@ function addproduct(name, price) {
 }
 
 function produit(data) {
-    teddies.innerHTML +=`
+    let htmlStrpeluche = `
     <div class="peluche" id="cardsProduct">
       <img class="img2" src=${data.imageUrl} alt="">
       <div class="description">
@@ -78,10 +89,9 @@ function produit(data) {
         <span class="peluche-description">
           ${data.description}
         </span><br><br><span class="choix">Personnalisez votre peluche :</span>
-        <select class="options" id ="color">
-          <option value=${data.colors[0]}>${data.colors[0]}</option>
-          <option value=${data.colors[1]}>${data.colors[1]}</option>
-          <option value=${data.colors[2]}>${data.colors[2]}</option>
+        <select class="options" id ="color">`;
+        htmlStrpeluche += coloroption(data);
+        htmlStrpeluche += `
         </select>
         <p class="prix"> Prix Unitaire: ${data.price/ 100}€</p>
         <span class="quantityx">Quantité</span>
@@ -94,7 +104,7 @@ function produit(data) {
       </div>
     </div>
   `;
-
+  teddies.innerHTML = htmlStrpeluche;
 }
 
 getdata()

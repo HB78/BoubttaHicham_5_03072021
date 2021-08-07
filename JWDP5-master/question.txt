@@ -51,3 +51,7 @@ function delIndexPanier(index) {
   localStorage.setItem("panier", JSON.stringify(panier));
   window.location.href = "panier.html";
 }
+
+l'iteration sur les couleurs qui ne fonctionnent pas.
+le bouton commander qui ne devraient pas s'activer si les champs ne sont pas remplis.
+qu'est ce que tu rajouterais pour finaliser le projet ?

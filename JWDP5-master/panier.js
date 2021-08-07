@@ -29,8 +29,6 @@ const contact = {
     email: email
   }
 
-    //  phone : document.getElementById("phone").value
-   
     //envoie du panier et du formulaire dans le serveur avec fecth et post//
     const arraysend = {
       contact,
@@ -53,12 +51,27 @@ const contact = {
       console.log(orderId)
       localStorage.setItem("orderId", orderId)
       window.location.href = "confirmation.html"
-      
     })
     .catch( (err) => {
       console.log("fetch Error",err);
     });
 }
+
+/* Fonction validation du formulaire */
+function isFromValid() {
+  let testNom = new RegExp("[a-zA-Z]").test(nom.value);
+  let testPrenom = new RegExp("[a-zA-Z]").test(prenom.value);
+  let testLieu = new RegExp("[a-zA-Z0-9.-]").test(lieu.value);
+  let testVille = new RegExp("[a-zA-Z]").test(ville.value);
+  let testMail = new RegExp("^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-zA-Z]{2,10}$").test(mail.value);
+  let testPhone = new RegExp("^[0-9]{10}$").test(phone.value);
+  
+  if (testPrenom && testNom && testLieu && testVille && testMail && testPhone) {
+    return true;
+  }
+  return false;
+}
+
 /*un groupe de fonction pour effacer les produits du panier*/
 function delIndexPanier(index) {
   panier.splice(index, 1);
@@ -83,7 +96,7 @@ function validName(nom){
     nom.classList.add('goodbox')
     console.log('c super')
   }else {
-    console.log("putain")
+    console.log("zut")
     smallname.textContent = "ce champs ne doit contenir des lettres"
     smallname.style.color = "red"
     nom.classList.remove('goodbox')
@@ -152,14 +165,14 @@ function validEmail(mail) {
     mail.classList.remove('badbox')
     mail.classList.add('goodbox')
   }else {
-    smallcity.textContent = "ce champs est invalide"
-    smallcity.style.color = "red"
+    smallmail.textContent = "ce champs est invalide"
+    smallmail.style.color = "red"
     mail.classList.remove('goodbox')
     mail.classList.add('badbox')
   }
 }
 function validPhone(phone) {
-  let phoneRegex = new RegExp("[0-9]")
+  let phoneRegex = new RegExp("^[0-9]{10}$")
   let testphone = phoneRegex.test(phone.value)
   let smallphone = document.getElementById("smallphone")
   if(testphone == true) {
@@ -222,14 +235,18 @@ if(panier !=null) {
     })
       //recuperation du formulaire pour les mettre dans le local storage au clic sur le bouton envoie//
         const envoieFomulaire = document.getElementById("commander")
-        envoieFomulaire.addEventListener('click', (e)=> {
-          e.preventDefault()
+        envoieFomulaire.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (isFromValid()) {
           postapi()
+          return;
+        }
+        alert("Merci de remplir le formulaire corectement");
       })
   }
   
   main();
-}else {
+} else {
 let pan = document.getElementById("panier")
 let livraison = document.getElementById("livraison")
  form.style.display = "none";
