@@ -55,3 +55,27 @@ function delIndexPanier(index) {
 l'iteration sur les couleurs qui ne fonctionnent pas.
 le bouton commander qui ne devraient pas s'activer si les champs ne sont pas remplis.
 qu'est ce que tu rajouterais pour finaliser le projet ?
+
+********************************************************************
+
+Je ne comprends plus le fonctionnent du search params
+
+comment ai je fait pour créer une variable (produit.totalprice) paradoxalement totalprice se 
+trouve dans le localStorage alors que je ne l'ai jamais tapé
+
+différence entre .map et foreach
+
+quelle est meilleure méthode pour faire un fetch ?
+Peut on faire appelle à une fonction dans le fetch ? Est-ce une bonne pratique ?
+
+je n'arrive pas du tout à intégrer la logique des booléens 
+
+comment organiser les dossiers ?
+
+le bundler a t'il une utilité dans ce projet ?
+
+Sur quoi vais-je etre interrogé durant l'examen ?
+
+Faut il transpiler (babel) dans ce projet ?
+
+HEROKU ?
