@@ -7,7 +7,7 @@ function clearend() {
     localStorage.removeItem("arraysend")
     window.location.href = "index.html"
 }
-function principale() {
+function main() {
     let sommeTotal = JSON.parse(localStorage.getItem("sommeTotal"));
     orderId = localStorage.getItem("orderId")
     let arraysend = JSON.parse(localStorage.getItem("arraysend"));
@@ -20,4 +20,4 @@ function principale() {
     </div>`;
     confirms.innerHTML += thanks;
 }
-principale()
+main()

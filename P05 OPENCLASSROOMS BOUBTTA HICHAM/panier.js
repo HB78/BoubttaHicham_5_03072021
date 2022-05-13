@@ -1,16 +1,15 @@
-
-/* On récupere le pannier de l'utilisateur dans le local storage */
+/* On récupere le panier de l'utilisateur dans le local storage */
 let panier = JSON.parse(localStorage.getItem("panier"));
-let form = document.getElementById("form")
+let form = document.getElementById("form");
 let id = JSON.parse(localStorage.getItem("id"));
 console.log("id", id)
 /*ajout des input du formulaire pour faire fonctionner les regex et la validation des input*/
-let prenom = document.getElementById("firstname")
-let nom = document.getElementById("lastname")
-let lieu = document.getElementById("adress")
-let ville = document.getElementById("city")
-let mail = document.getElementById("mail")
-let phone = document.getElementById("phone")
+let prenom = document.getElementById("firstname");
+let nom = document.getElementById("lastname");
+let lieu = document.getElementById("adress");
+let ville = document.getElementById("city");
+let mail = document.getElementById("mail");
+let phone = document.getElementById("phone");
 
 /*fonction pour envoyer les info avec fetch-post*/
 function postapi() {
@@ -36,7 +35,6 @@ const contact = {
     }
     console.log("array", arraysend)
     localStorage.setItem("arraysend", JSON.stringify(arraysend))
-    
     let sendpost = {
       method: 'POST',
       headers: {'Content-Type': "application/json"},
@@ -77,6 +75,9 @@ function delIndexPanier(index) {
   panier.splice(index, 1);
   localStorage.setItem("panier", JSON.stringify(panier));
   window.location.href = "panier.html";
+  if(index == 0) {
+    viderPanier()
+  }
 }
 
 function viderPanier() {
@@ -148,7 +149,7 @@ function validCity(ville) {
     ville.classList.remove('badbox')
     ville.classList.add('goodbox')
   }else {
-    smallcity.textContent = "ce champs doit contenir des lettres et des chiffres"
+    smallcity.textContent = "ce champs ne doit contenir quedes lettres et non des chiffres"
     smallcity.style.color = "red"
     ville.classList.remove('goodbox')
     ville.classList.add('badbox')
@@ -175,17 +176,23 @@ function validPhone(phone) {
   let phoneRegex = new RegExp("^[0-9]{10}$")
   let testphone = phoneRegex.test(phone.value)
   let smallphone = document.getElementById("smallphone")
-  if(testphone == true) {
+  if(testphone == true && phone.value.length == 10) {
     smallphone.style.color = "green"
     smallphone.textContent = "ce champs est valide"
     phone.classList.add("goodbox")
     phone.classList.remove("badbox")
   }else {
-    smallphone.textContent = "ce champs ne doit contenir que des chiffres"
+    smallphone.textContent = "Veuillez entrer au moins 10 chiffres"
     smallphone.style.color = "red"
     phone.classList.add("badbox")
     phone.classList.remove("goodbox")
   }
+  if(isNaN(phone.value)) {
+    smallphone.textContent = "ce champs ne doit contenir que des chiffres"
+    smallphone.style.color = "red"
+    phone.classList.add("badbox")
+    phone.classList.remove("goodbox")
+}
 }
 /* FIN : un groupe de fonction qui verifie la validité des input du formulaire*/
 
@@ -195,7 +202,7 @@ if(panier !=null) {
     let facture = document.getElementById('facture');
     let tableproduct = document.getElementById("tableproduct");
     console.log("panier", panier);
-    /* On remplis le html avec les donné du pannier et on calcule le total*/
+    /* On remplis le html avec les données du panier et on calcule le total*/
     panier.forEach((produitPanier, index) => {
       produitPanier.totalPrice = produitPanier.quantity * produitPanier.price;
       tableproduct.innerHTML += `

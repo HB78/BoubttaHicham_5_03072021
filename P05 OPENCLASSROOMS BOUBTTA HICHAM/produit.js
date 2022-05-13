@@ -8,7 +8,6 @@ const id = params.get("id");
 let teddies = document.querySelector("#teddies")
 /*iteration sur les options couleurs*/
 function coloroption(data) {
-  console.log("data ici", data)
   console.log("data.colors.length", data.colors.length)
   let res = "";
   for (let i = 0; i < data.colors.length; i++) {
@@ -17,26 +16,18 @@ function coloroption(data) {
   return res;
 }
 
-function getdata() {
-  fetch("http://localhost:3000/api/teddies/" + id)
-  .then(res => {
-      if(res.ok) {
-      }
-
-    return res.json()
-  })
-  .then(data => {
+async function getdata() {
+  try {
+      let reponse = await fetch("http://localhost:3000/api/teddies/" + id);
+      let data = await reponse.json();
+      console.table(data)
       produit(data)
-      console.log(data)
-      localStorage.setItem("id", JSON.stringify(data._id))
+  } catch (error) {
+      teddies.textContent = "il y a un problème"
+      console.log(erreur)
   }
-    )
-  .catch((error) => {
-    console.log("error")
-    console.log(error)
-  })
 }
-
+//la fonction addproduct permet de rajouter des produits dans le panier
 function addproduct(name, price) {
   /* Variable */
   let quantity = document.getElementById("quantity").value;
@@ -61,7 +52,8 @@ function addproduct(name, price) {
     let elemFind = false;
     panier.forEach((produitPanier, index) => {
       console.log("On vérifie si le nom de notre produit :> " + product.name + " Match avec un nom de produit dans le pannier :> " + produitPanier.name + " test numero :> " +  index)
-      if (product.name == produitPanier.name && elemFind == false) { // si il existe ajouté la qte choisis
+      if (product.name == produitPanier.name && elemFind == false) { 
+        // si le produit existe déjà ajouté la qte choisis
         console.log("ça match on ajoute la qte")
         console.log("produitPanier.quantity = produitPanier.quantity + product.quantity;")
         produitPanier.quantity = produitPanier.quantity + product.quantity;
@@ -69,7 +61,7 @@ function addproduct(name, price) {
         elemFind = true
       }
     })
-    if (elemFind == false) { //finir la Condition
+    if (elemFind == false) { //si le produit n'est pas déjà dans le panier on l'ajoute dans l'array panier
       console.log("Le produite est pas dans le pannier on le push");
       console.log('taille panier avant :>> ', panier.length);
       panier.push(product);
@@ -79,16 +71,16 @@ function addproduct(name, price) {
   }
   alert('Le produit a été ajouté au panier');
 }
-
 function produit(data) {
     let htmlStrpeluche = `
     <div class="peluche" id="cardsProduct">
-      <img class="img2" src=${data.imageUrl} alt="">
+      <img class="img2" src=${data.imageUrl} alt="une belle peluche haut de gamme">
       <div class="description">
         <p class="nom">${data.name}</p>
         <span class="peluche-description">
           ${data.description}
-        </span><br><br><span class="choix">Personnalisez votre peluche :</span>
+        </span>
+        <br><br><span class="choix">Personnalisez votre peluche :</span>
         <select class="options" id ="color">`;
         htmlStrpeluche += coloroption(data);
         htmlStrpeluche += `
@@ -108,5 +100,3 @@ function produit(data) {
 }
 
 getdata()
-
-

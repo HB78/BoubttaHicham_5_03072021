@@ -1,24 +1,15 @@
-let products = document.querySelector("#products")
+let products = document.querySelector("#products");
 
-function getdata() { 
-  fetch("http://localhost:3000/api/teddies")
-  .then(res => {
-      if(res.ok) {
-      }
-
-    return res.json()
-  })
-  .then(data => {
-      datacards(data)
-      console.log(data)
-      console.log(data[0]._id)
-      const html = data[0].name + data[0].colors + data[0].imageUrl
-      console.log(data[0].colors[2])
-  }
-    )
-  .catch(console.log("erreur"))
+async function getdata() {
+    try {
+        let reponse = await fetch("http://localhost:3000/api/teddies")
+        let data = await reponse.json()
+        datacards(data)
+    } catch (error) {
+        products.textContent = "il y a un problème"
+        console.log(erreur)
+    }
 }
-
 function datacards(data) {
     for (let i = 0; i < data.length; i++) {
         products.innerHTML += `
@@ -45,5 +36,3 @@ function datacards(data) {
     }
 }
 getdata()
-
-
