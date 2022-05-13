@@ -69,3 +69,10 @@ form {
 }
 
 }
+/*reglage du responsive du texte contenus dans les cards de la page d'accueil*/
+
+@media (min-width:768px) and (max-width:895px) {
+.description {
+    font-size: 14px;
+}
+}
